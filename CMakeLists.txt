@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.3)
 project(demo_tests)
 
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTI_THREADED ON)
-
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -20,3 +17,14 @@ link_libraries(gtest)
 link_libraries(gtest_main)
 
 add_executable(demo_tests ${SOURCE_FILES})
+
+if(MSVC)
+  foreach(flag_var CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+      if(${flag_var} MATCHES "/MD")
+          string(REGEX REPLACE "/MD" "/MT" ${flag_var} "${${flag_var}}")
+      endif(${flag_var} MATCHES "/MD")
+      if(${flag_var} MATCHES "/MDd")
+          string(REGEX REPLACE "/MDd" "/MTd" ${flag_var} "${${flag_var}}")
+      endif(${flag_var} MATCHES "/MDd")
+  endforeach(flag_var)
+endif(MSVC)

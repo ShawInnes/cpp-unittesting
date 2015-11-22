@@ -5,6 +5,10 @@ Makefile
 cmake_install.cmake
 install_manifest.txt
 
+*.sln
+*.vcxproj
+*.filters
+
 *.o
 *.a
 
