@@ -9,10 +9,15 @@ install_manifest.txt
 *.vcxproj
 *.filters
 
+bin/*
+Win32/*
+*.dir/
+*.opensdf
+*.sdf
+
+
 *.o
 *.a
-
-bin/*
 
 # force libs to not be ignored
 !lib/**
