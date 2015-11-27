@@ -21,3 +21,5 @@ Win32/*
 
 # force libs to not be ignored
 !lib/**
+
+.idea/
