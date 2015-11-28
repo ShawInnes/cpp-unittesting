@@ -8,14 +8,24 @@ Self-contained demo of C++ unit testing examples
 
     git clone https://github.com/shawinnes/cpp-unittesting
     cd cpp-unittesting
-    cmake CMakeLists.txt
+    mkdir build
+    cd build
+    cmake ..
     make
-    bin/demo_tests
+    ctest -V
 
 ## Windows
 
-> coming soon
+    git clone https://github.com/shawinnes/cpp-unittesting
+    cd cpp-unittesting
+    mkdir build
+    cd build
+    cmake ..
+    msbuild demo.sln
+    ctest -V
 
 # History
 
+- commented
+- updated to support Visual Studio
 - initial commit using g++ on OS X (the lib/*.a files are OS X builds)
