@@ -9,12 +9,13 @@ install_manifest.txt
 *.vcxproj
 *.filters
 
+build/
+
 bin/*
 Win32/*
 *.dir/
 *.opensdf
 *.sdf
-
 
 *.o
 *.a
