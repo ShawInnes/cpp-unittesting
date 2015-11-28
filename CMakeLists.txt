@@ -22,17 +22,23 @@ add_library(${PROJECT_LIB_NAME} ${SRC_FILES})
 # Test
 #-------------------
 add_subdirectory(${EXT_PROJECTS_DIR}/gtest)
+add_subdirectory(${EXT_PROJECTS_DIR}/gmock)
 
 enable_testing()
+
 set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
 include_directories(${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
+include_directories(${GMOCK_INCLUDE_DIRS} ${COMMON_INCLUDES})
 
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
 target_link_libraries(${PROJECT_TEST_NAME} ${PROJECT_LIB_NAME})
 
 add_dependencies(${PROJECT_TEST_NAME} gtest)
+add_dependencies(${PROJECT_TEST_NAME} gmock)
 add_dependencies(${PROJECT_TEST_NAME} ${PROJECT_LIB_NAME})
+
+add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
 
 if(NOT WIN32)
     target_link_libraries(${PROJECT_TEST_NAME}
@@ -59,5 +65,3 @@ else()
       endforeach(flag_var)
     endif(MSVC)
 endif()
-
-add_test(test1 ${PROJECT_TEST_NAME})
