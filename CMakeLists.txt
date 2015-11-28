@@ -18,7 +18,7 @@ file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 add_library(${PROJECT_LIB_NAME} ${SRC_FILES})
 
 #-------------------
-# Goole Test
+# Google Test
 #-------------------
 add_library(gtest  "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.7.0/src/gtest-all.cc")
 set_property(TARGET gtest PROPERTY INCLUDE_DIRECTORIES
