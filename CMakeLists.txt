@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.3)
-
 set(PROJECT_NAME_STR demo)
+
 project(${PROJECT_NAME_STR} C CXX)
 
 #-------------------
 # set common include folder for module
 #-------------------
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/gtest-1.7.0/include)
+
+#-------------------
+# include cotire for build optimisation
+#-------------------
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
+include(cotire)
 
 #-------------------
 # Module Source
@@ -44,6 +50,11 @@ target_link_libraries(${PROJECT_TEST_NAME} gtest)
 target_link_libraries(${PROJECT_TEST_NAME} gtestmain)
 
 add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
+
+#-------------------
+# optimise with cotire
+#-------------------
+cotire(${PROJECT_LIB_NAME} ${PROJECT_TEST_NAME} gtest gtestmain)
 
 if(MSVC)
   foreach(flag_var CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
