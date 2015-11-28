@@ -10,6 +10,7 @@ install_manifest.txt
 *.filters
 
 build/
+vsbuild/
 
 bin/*
 Win32/*

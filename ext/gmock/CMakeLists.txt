@@ -6,7 +6,8 @@ include(ExternalProject)
 
 ExternalProject_Add(
     gmock
-    URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip
+    URL https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+    URL_MD5 4ff6353b2560df0afecfbda3b2763847
     CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
                -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
                -DCMAKE_CXX_FLAGS=${MSVC_COMPILER_DEFS}
