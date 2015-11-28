@@ -9,15 +9,19 @@ install_manifest.txt
 *.vcxproj
 *.filters
 
+build/
+vsbuild/
+
 bin/*
 Win32/*
 *.dir/
 *.opensdf
 *.sdf
 
-
 *.o
 *.a
 
 # force libs to not be ignored
 !lib/**
+
+.idea/
