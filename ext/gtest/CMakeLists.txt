@@ -2,6 +2,17 @@ cmake_minimum_required(VERSION 3.3)
 project(gtest C CXX)
 find_package(Threads REQUIRED)
 
+if(MSVC)
+  foreach(flag_var CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+      if(${flag_var} MATCHES "/MD")
+          string(REGEX REPLACE "/MD" "/MT" ${flag_var} "${${flag_var}}")
+      endif(${flag_var} MATCHES "/MD")
+      if(${flag_var} MATCHES "/MDd")
+          string(REGEX REPLACE "/MDd" "/MTd" ${flag_var} "${${flag_var}}")
+      endif(${flag_var} MATCHES "/MDd")
+  endforeach(flag_var)
+endif(MSVC)
+
 include(ExternalProject)
 
 ExternalProject_Add(
@@ -10,7 +21,6 @@ ExternalProject_Add(
     URL_MD5 4ff6353b2560df0afecfbda3b2763847
     CMAKE_ARGS -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG:PATH=DebugLibs
                -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE:PATH=ReleaseLibs
-               -DCMAKE_CXX_FLAGS=${MSVC_COMPILER_DEFS}
                -Dgtest_force_shared_crt=ON
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
     INSTALL_COMMAND ""
