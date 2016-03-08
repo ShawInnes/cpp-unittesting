@@ -20,7 +20,7 @@ Self-contained demo of C++ unit testing examples
     cd cpp-unittesting
     mkdir build
     cd build
-    cmake ..
+    cmake -G "Visual Studio 14 2015 Win64" ..	
     msbuild demo.sln
     ctest -V
 
