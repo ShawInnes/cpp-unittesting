@@ -10,9 +10,10 @@ Self-contained demo of C++ unit testing examples
     cd cpp-unittesting
     mkdir build
     cd build
+    conan install ..
     cmake ..
     make
-    ctest -V
+    bin/demo_test
 
 ## Windows
 
@@ -20,12 +21,13 @@ Self-contained demo of C++ unit testing examples
     cd cpp-unittesting
     mkdir build
     cd build
-    cmake -G "Visual Studio 14 2015 Win64" ..	
+    conan install ..
+    cmake -G "Visual Studio 14 Win64" ..
     msbuild demo.sln
-    ctest -V
 
 # History
 
 - commented
 - updated to support Visual Studio
 - initial commit using g++ on OS X (the lib/*.a files are OS X builds)
+- Added Conan 

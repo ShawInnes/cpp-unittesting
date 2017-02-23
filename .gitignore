@@ -4,6 +4,8 @@ CMakeScripts
 Makefile
 cmake_install.cmake
 install_manifest.txt
+conanbuildinfo.cmake
+conaninfo.txt
 
 *.sln
 *.vcxproj
