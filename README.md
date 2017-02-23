@@ -16,6 +16,20 @@ Self-contained demo of C++ unit testing examples
     choco install python
     pip install conan
 
+### Workaround for Windows Visual Studio
+
+Sometimes conan doesn't correctly identify the local compiler.  The following settings go in `%homepath%\.conan\conan.conf`
+
+```
+[settings_defaults]
+arch=x86_64
+os=Windows
+compiler=Visual Studio
+compiler.version=15
+compiler.runtime=MD
+build_type=Release
+```
+
 # Basic Usage
 
 ## OS X / Linux

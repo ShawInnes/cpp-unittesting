@@ -6,7 +6,7 @@ project(${PROJECT_NAME_STR} C CXX)
 include(MSVC.cmake)
 enable_testing()
 
-include(${PROJECT_SOURCE_DIR}/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 #-------------------
