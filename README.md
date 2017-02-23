@@ -25,7 +25,7 @@ Sometimes conan doesn't correctly identify the local compiler.  The following se
 arch=x86_64
 os=Windows
 compiler=Visual Studio
-compiler.version=15
+compiler.version=14 ## 15 doesn't seem to work just yet
 compiler.runtime=MD
 build_type=Release
 ```
@@ -50,8 +50,11 @@ build_type=Release
     mkdir build
     cd build
     conan install ..
-    cmake -G "Visual Studio 14 Win64" ..
-    msbuild demo.sln
+    cmake -G "Visual Studio 15 Win64" ..
+    msbuild demo.sln /p:Configuration=Release    
+
+> for some reason Debug is broken with the introduction of googletest from conan
+> work required.
 
 # History
 
