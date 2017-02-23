@@ -2,6 +2,20 @@
 
 Self-contained demo of C++ unit testing examples
 
+# Setup
+
+## OS X
+
+    brew update
+    brew install cmake
+    brew install conan
+
+## Windows
+
+    choco install cmake
+    choco install python
+    pip install conan
+
 # Basic Usage
 
 ## OS X / Linux
@@ -30,4 +44,4 @@ Self-contained demo of C++ unit testing examples
 - commented
 - updated to support Visual Studio
 - initial commit using g++ on OS X (the lib/*.a files are OS X builds)
-- Added Conan 
+- Added Conan
