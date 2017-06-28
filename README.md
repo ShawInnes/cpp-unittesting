@@ -25,7 +25,7 @@ Sometimes conan doesn't correctly identify the local compiler.  The following se
 arch=x86_64
 os=Windows
 compiler=Visual Studio
-compiler.version=14 ## 15 doesn't seem to work just yet
+compiler.version=15
 compiler.runtime=MD
 build_type=Release
 ```
@@ -49,7 +49,7 @@ build_type=Release
     cd cpp-unittesting
     mkdir build
     cd build
-    conan install .. --build missing
+	conan install .. -s compiler="Visual Studio" -s compiler.version=15 -s compiler.runtime=MT --build missing
     cmake -G "Visual Studio 15 Win64" ..
     msbuild demo.sln /p:Configuration=Release    
 
