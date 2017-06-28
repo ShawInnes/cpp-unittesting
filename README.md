@@ -38,7 +38,7 @@ build_type=Release
     cd cpp-unittesting
     mkdir build
     cd build
-    conan install ..
+    conan install .. --build missing
     cmake ..
     make
     bin/demo_test
@@ -49,7 +49,7 @@ build_type=Release
     cd cpp-unittesting
     mkdir build
     cd build
-    conan install ..
+    conan install .. --build missing
     cmake -G "Visual Studio 15 Win64" ..
     msbuild demo.sln /p:Configuration=Release    
 
